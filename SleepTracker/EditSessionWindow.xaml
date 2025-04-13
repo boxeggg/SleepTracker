@@ -1,5 +1,4 @@
-﻿
-<Window x:Class="SleepTracker.EditSessionWindow"
+﻿<Window x:Class="SleepTracker.EditSessionWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Edytuj sesje snu" Height="350" Width="400">
@@ -15,27 +14,28 @@
 
         <StackPanel Orientation="Vertical" Grid.Row="0" Margin="0,0,0,10">
             <TextBlock Text="Data:"/>
-            <DatePicker x:Name="DatePicker"/>
+            <DatePicker SelectedDate="{Binding Date, Mode=TwoWay}" />
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Grid.Row="1" Margin="0,0,0,10">
             <TextBlock Text="Godzina snu:"/>
-            <TextBox x:Name="SleepTimeBox" Text="22:30" />
+            <TextBox Text="{Binding SleepTime, Mode=TwoWay}" />
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Grid.Row="2" Margin="0,0,0,10">
             <TextBlock Text="Godzina pobudki:"/>
-            <TextBox x:Name="WakeUpTimeBox" Text="06:45" />
+            <TextBox Text="{Binding WakeUpTime, Mode=TwoWay}" />
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Grid.Row="3" Margin="0,0,0,10">
             <TextBlock Text="Jakość snu (1-5):"/>
-            <TextBox x:Name="QualityBox" Text="4" />
+            <TextBox Text="{Binding SleepQuality, Mode=TwoWay}" />
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Grid.Row="4" Margin="0,0,0,10">
             <TextBlock Text="Notatki:"/>
-            <TextBox x:Name="NotesBox" Height="60" AcceptsReturn="True" TextWrapping="Wrap"/>
+            <TextBox Height="60" AcceptsReturn="True" TextWrapping="Wrap"
+                     Text="{Binding Notes, Mode=TwoWay}" />
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" Grid.Row="5" HorizontalAlignment="Right">

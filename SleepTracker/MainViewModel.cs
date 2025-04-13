@@ -57,13 +57,27 @@ namespace SleepTracker
         }
         public void EditSession(SleepSession session)
         {
-            Debug.WriteLine(session.Id);
             using var db = new AppDbContext();
-            db.SleepSessions.Update(session);
 
-            db.SaveChanges();
+            var existing = db.SleepSessions.FirstOrDefault(s => s.Id == session.Id);
+            if (existing is null)
+            {
+                Debug.WriteLine("Nie znaleziono rekordu w bazie");
+                return;
+            }
+            existing.Date = session.Date;
+            Debug.WriteLine(session.SleepQuality);
+            existing.SleepTime = session.SleepTime;
+            existing.WakeUpTime = session.WakeUpTime;
+            existing.SleepQuality = session.SleepQuality;
+            existing.Notes = session.Notes;
+             
+
+            if ( db.SaveChanges() > 0) Debug.WriteLine("Zapisano zmiany do bazy.");  // <-- TO powinna działać
 
             RefreshSessions();
+           
+
 
         }
 

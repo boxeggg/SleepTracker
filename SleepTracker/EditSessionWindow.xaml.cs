@@ -1,6 +1,7 @@
 ﻿using SleepTracker.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,15 +33,16 @@ namespace SleepTracker
           
             NewSession = new SleepSession
             {
-                Id = sessionToEdit.Id,
+                Id = sessionToEdit.Id, 
                 Date = sessionToEdit.Date,
                 SleepTime = sessionToEdit.SleepTime,
                 WakeUpTime = sessionToEdit.WakeUpTime,
                 SleepQuality = sessionToEdit.SleepQuality,
                 Notes = sessionToEdit.Notes
             };
+            Debug.WriteLine(NewSession.SleepQuality);
 
-           
+
             DataContext = NewSession;
         }
 
